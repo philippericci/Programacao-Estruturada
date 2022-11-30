@@ -52,14 +52,14 @@ int main()
 		case 1://cadastrar novo contato
 			cadastrar(arq);
 			break;
-		case 2://consultar por código
+		case 2://consultar por cÃ³digo
 			consultar(arq);
 			break;
 		case 3://	gera arquivo de texto com todos os produtos ordenados alfabeticamente
 		     geraarqtxt(arq);
 			break;
 			
-		case 4: //compara dois itens por preço
+		case 4: //compara dois itens por preÃ§o
 			comparar(arq); 
 			break;
 			
@@ -86,7 +86,7 @@ void cadastrar(FILE *arq)
 	gets(item.produto);
 	printf("Quantidade de Produto......:");
 	scanf("%i",&item.quantidade);
-	printf("Preço........:");
+	printf("PreÃ§o........:");
 	scanf("%f",&item.preco);
 	printf("\nConfirma <s/n>:");
 	fflush(stdin);
@@ -149,7 +149,7 @@ void geraarqtxt(FILE *arq)
 	}
 	else				//Estava faltando o else...
 	{
-		fprintf(arqtxt, "Nome                Quantidade    Preço                   Status\n");
+		fprintf(arqtxt, "Nome                Quantidade    PreÃ§o                   Status\n");
 		fprintf(arqtxt, "================================================================\n");
 		
 		int nr;
@@ -158,7 +158,7 @@ void geraarqtxt(FILE *arq)
 		{
 			fseek(arq, nr * sizeof(reg), SEEK_SET);
 			fread(&item, sizeof(reg), 1, arq);
-			fprintf(arqtxt, "%-30s %-5d %-10.2f %-5c\n", item.produto, item.quantidade, item.preco, item.status);//Estavam todas com %s porém como o código de vocês usam variavel int e float estava fechando o programa quando chamavam as variaveis
+			fprintf(arqtxt, "%-30s %-5d %-10.2f %-5c\n", item.produto, item.quantidade, item.preco, item.status);
 		}
 		fprintf(arqtxt, "================================================================\n");
 		fclose(arqtxt);
@@ -183,7 +183,7 @@ void excluir(FILE *arq)
 		{
 			printf("\nProduto......:%s", item.produto);
 			printf("\nQuantidade..:%i", item.quantidade);
-			printf("\nPreço....:%.2f\n", item.preco);
+			printf("\nPreÃ§o....:%.2f\n", item.preco);
 			printf("\nConfirma a exclusao: <s/n>\n");
 			getchar();
 			scanf("%c", &confirma);
@@ -246,10 +246,10 @@ void comparar(FILE *arq) // este void e o novo, tenta comparar os produtos pelo 
 						printf ("Item 1 e mais caro que o Item 2.\n");
 					}
 					else if (preco1==preco2){
-						printf ("Os dois itens possuem o mesmo preço.\n");
+						printf ("Os dois itens possuem o mesmo preÃ§o.\n");
 					}
 					else if (preco1<preco2){
-						printf ("Item 1 é mais barato que o Item 2.\n");
+						printf ("Item 1 Ã© mais barato que o Item 2.\n");
 					}
 				}
 
